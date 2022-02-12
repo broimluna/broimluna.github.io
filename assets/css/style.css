@@ -1,0 +1,68 @@
+ body {
+            background-image: url('../img/background.png');
+            background-size: cover;
+            font-family: helvetica;
+            overflow-y: hidden;
+
+        }
+        p {
+            font-family: helvetica;
+            color: white;
+          text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+        }
+         big {
+            font-family: helvetica;
+            color: white;
+
+        }
+        marquee {
+            font-family: helvetica;
+            color: white;
+        }
+        a {
+            font-family: helvetica;
+            color: white;
+        }
+        
+        div.flower {
+          position: relative;
+          left: 30px;
+          border: 3px solid #73AD21;
+        }
+        .center-div
+{
+     margin: 0 auto;
+     width: 100px; 
+}
+
+.appHtxt {
+ font-family: Segoe UI; 
+}
+
+.topnav {
+  background-color: transparent;
+  color: white;
+  overflow: hidden;
+}
+
+.topnav a {
+  float: left;
+  font-family: helvetica;
+  color: white;
+  text-align: center;
+  padding: 3px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: white;
+  font-family: helvetica;
+}
+.topnav a.active {
+  background-color: rgb(255, 140, 140);
+  color: white;
+  font-family: helvetica;
+}

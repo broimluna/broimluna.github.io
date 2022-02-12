@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	
+	<link rel="stylesheet" type="text/css" href="assets/css/index.css" />
+
+    
+	<title>Luna's site</title>
+</head>
+<body>
+
+<div id="startmenu" style="height: 0px;" onclick="off()">
+	<h1 class="startHtxt">Start</h1>	
+    <center>
+		<div id="starticons">
+		            <a href="cap.html" target="screen"><img border="0" alt="" src="assets/img/home.png" width="32" height="32"><br>Home</a>
+                <a href="news.html" target="screen"><img border="0" alt="" src="assets/img/news.png" width="32" height="32"><br>News</a>
+                <a href="people.html" target="screen"><img border="0" alt="" src="assets/img/people.png" width="40" height="32"><br>People</a>
+                <a href="mc.html" target="screen"><img border="0" alt="" src="assets/img/mc.png" width="32" height="32"><br>Minecraft</a>
+                <a href="https://avalancheos.glitch.me" target="screen"><img border="0" alt="" src="assets/img/avaos.png" width="60" height="32"><br>AvalancheOS</a>
+
+
+
+
+                
+                </div>
+    </center>
+
+  </div>
+  
+
+<iframe class="screen" name="screen" scrolling="yes" src="cap.html" style="position: absolute;height: 98%;width:99%;overflow: scroll;background-color: #FFF;" frameborder="1"></iframe>
+
+<button onclick="on();">Start</button>           
+
+<!--<div id="startbar">
+			<button onclick="on();">Start</button>           
+		</div>-->
+
+ <script>
+		function on() {
+                  document.getElementById("startmenu").style.height = "450px";
+
+		}
+		
+		function off() {
+                  document.getElementById("startmenu").style.height = "0px";
+
+		}
+    </script>
+</body>
+
+</html>

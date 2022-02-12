@@ -1,0 +1,112 @@
+@import url(https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+ *, *:before, *:after {
+	 box-sizing: border-box;
+}
+ html {
+	 font-family: 'Segoe UI', sans-serif;
+	 font-size: 12px;
+	 min-height: 100%;
+	 background-size: cover;
+}
+ .tiles {
+	 margin: 200px 100px;
+}
+ .tiles__group {
+	 display: inline-block;
+	 min-height: 512px;
+	 max-height: 640px;
+	 margin-right: 56px;
+}
+ .tiles__col {
+	 display: inline-block;
+	 vertical-align: top;
+	 margin-right: -0.25em;
+	 width: 256px;
+}
+ .tiles__tile {
+	 position: relative;
+	 display: inline-block;
+	 vertical-align: top;
+	 height: 120px;
+	 width: 120px;
+	 margin: 0 4px 8px 0;
+	 margin: 0 calc(8px - 0.25em) 8px 0;
+	/* Fix whitespace issue with calc */
+	 color: white !important;
+	 box-shadow: inset 0 0 1px rgba(255, 255, 255, .4);
+}
+ .tiles__tile > i, .tiles__tile > span {
+	 pointer-events: none;
+}
+ .tiles__tile > i {
+	 display: block;
+	 font-size: 48px;
+	 text-align: center;
+	 margin-top: 24px;
+}
+ .tiles__tile > span {
+	 position: absolute;
+	 left: 16px;
+	 bottom: 8px;
+}
+ .tiles__tile:hover {
+	 box-shadow: 0 0 0 3px #363636, inset 0 0 1px rgba(255, 255, 255, .4);
+}
+ .tiles__tile--wide, .tiles__tile--large {
+	 width: 248px;
+}
+ .tiles__tile--large {
+	 height: 248px;
+}
+ .tiles__tile--large > i {
+	 margin-top: 90px;
+}
+ .small-wrap {
+	 display: inline-block;
+	 width: 120px;
+	 height: 120px;
+	 margin-bottom: 8px;
+}
+ .tiles__tile--small {
+	 width: 56px;
+	 height: 56px;
+}
+ .tiles__tile--small > i {
+	 font-size: 28px;
+	 margin-top: 14px;
+}
+ .tiles__tile--small > span {
+	 display: none;
+}
+ .tiles__tile--small:nth-child(even) {
+	 margin-right: 0;
+	 float: right;
+}
+ .tiles__tile--gray {
+	 background: linear-gradient(to right, #444 0%, #5e5e5e 100%);
+}
+ .tiles__tile--sky {
+	 background: linear-gradient(to right, #2672ec 0%, #5590f0 100%);
+}
+ .tiles__tile--red {
+	 background: linear-gradient(to right, #ac193d 0%, #d91f4d 100%);
+}
+ .tiles__tile--teal {
+	 background: linear-gradient(to right, #008299 0%, #00adcc 100%);
+}
+ .tiles__tile--blue {
+	 background: linear-gradient(to right, #094ab2 0%, #0b5ee3 100%);
+}
+ .tiles__tile--green {
+	 background: linear-gradient(to right, #008a00 0%, #00bd00 100%);
+}
+ .tiles__tile--purple {
+	 background: linear-gradient(to right, #8c0095 0%, #bc00c8 100%);
+}
+ .tiles__tile--indigo {
+	 background: linear-gradient(to right, #5133ab 0%, #6848c9 100%);
+}
+ .tiles__tile--orange {
+	 background: linear-gradient(to right, #d24726 0%, #df684c 100%);
+}
+ 
