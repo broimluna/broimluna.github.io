@@ -37,25 +37,17 @@
   </div>
   
 
-<iframe class="screen" name="screen" scrolling="yes" src="cap.html" style="position: absolute;height: 98%;width:99%;overflow: scroll;background-color: #FFF;" frameborder="1"></iframe>
+  <iframe id="screen" class="topscreen" name="topscreen" scrolling="yes" src="cap.html"></iframe>
+  <iframe id="screen" name="btmscreen" class="btmscreen" scrolling="yes" src="apps.html" ></iframe>
 
-<button onclick="on();">Start</button>           
+
+<a id="apps" href="cap.html" target="topscreen">Home</a>           
 
 <!--<div id="startbar">
 			<button onclick="on();">Start</button>           
 		</div>-->
 
- <script>
-		function on() {
-                  document.getElementById("startmenu").style.height = "450px";
-
-		}
-		
-		function off() {
-                  document.getElementById("startmenu").style.height = "0px";
-
-		}
-    </script>
+ 
 </body>
 
 </html>
