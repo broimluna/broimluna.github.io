@@ -4,16 +4,14 @@
 	<meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-	
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="assets/css/index.css" />
 
     
 	<title>Luna's site</title>
 </head>
-<body>
-
-<div id="startmenu" style="height: 0px;" onclick="off()">
+<body onload="startTime()">
+<div id="startmenu">
 	<h1 class="startHtxt">Start</h1>	
     <center>
 		<div id="starticons">
@@ -37,17 +35,59 @@
   </div>
   
 
-  <iframe id="screen" class="topscreen" name="topscreen" scrolling="yes" src="cap.html"></iframe>
-  <iframe id="screen" name="btmscreen" class="btmscreen" scrolling="yes" src="apps.html" ></iframe>
-
-
-<a id="apps" href="cap.html" target="topscreen">Home</a>           
+<iframe class="screen" name="screen" scrolling="yes" src="cap.html" frameborder="1"></iframe>
+<div id="time"></div>
+<button onclick="starttoggle()">Start</button>           
 
 <!--<div id="startbar">
 			<button onclick="on();">Start</button>           
 		</div>-->
 
- 
+ <script>
+		function starttoggle() {
+	document.getElementById("startmenu").classList.toggle("opened");
+};
+$(document).ready(function(){
+	$("#startmenu").click(function(){
+		document.getElementById("startmenu").classList.toggle("opened");
+	  }, function(){
+		document.getElementById("startmenu").classList.remove("opened");
+  
+	});
+  });
+
+  </script>
+  <script>
+function startTime(){
+    var date = new Date();
+    var h = date.getHours(); 
+    var m = date.getMinutes(); 
+    var s = date.getSeconds(); 
+    var session = "AM";
+    
+    if(h == 0){
+        h = 12;
+    }
+    
+    if(h > 12){
+        h = h - 12;
+        session = "PM";
+    }
+    
+    h = (h < 10) ? "0" + h : h;
+    m = (m < 10) ? "0" + m : m;
+    s = (s < 10) ? "0" + s : s;
+    
+    var time = h + ":" + m + ":" + s + " " + session;
+    document.getElementById("time").innerText = time;
+    document.getElementById("time").textContent = time;
+    setTimeout(startTime, 1000);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+    </script>
 </body>
 
 </html>

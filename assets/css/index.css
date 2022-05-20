@@ -26,7 +26,7 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 .startHtxt {
-	color: black;
+	color: white;
 
 }
 h1 {
@@ -36,21 +36,27 @@ h1 {
 
 
 #startmenu {
-    position: fixed;
-    margin: 0 auto;
-    width: 450px;
-    height: 450px;
-    left: 5px;
-    right: 0;
-    bottom: 34px;
-    z-index: 2;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    transition: 0.5s;
-    background-color: #e7e7e7ba;
-    border-radius: 10px;
-    -webkit-box-shadow: 0px 0px 15px 0px #000000; 
-    box-shadow: 0px 0px 15px 0px #000000;
+  position: fixed;
+  margin: 0 auto;
+  width: 450px;
+  height: 0px;
+  left: 0;
+  right: 0;
+  bottom: 35px;
+  z-index: 2;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  transition: 0.5s;
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 15px 0px #000000; 
+  box-shadow: 0px 0px 15px 0px #000000;
+}
+
+#startmenu.opened {
+  height: 450px;
 }
 
 
@@ -67,20 +73,28 @@ h1 {
     cursor: pointer;
     padding: 2px 8px;
     font-family: Arial, Helvetica, sans-serif;
-    color: black;
+    color: white;
     border-radius: 5px;
     text-decoration: none;
+    transition: 0.2s;
 }
 #starticons a:hover {
-	background: rgb(255, 255, 255);
+	background: white;
 	color: black;
 }
-
-
+#time {
+  font-family: Helvetica;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  text-align: center;
+  font-size: 40px;
+  color: lightgrey;
+/* background: slategrey; */backdrop-filter: blur(25px);border-radius: 7px;}
 button {
     display: inline-block;
     position: absolute;
-    border: 2px solid white;
+    border: 2px solid #000;
     border-radius: 5px;
     margin: -2px 0 0 10px;
     font-size: 15px;
@@ -91,56 +105,23 @@ button {
     height: 30px;
     bottom: 0;
     left: 48%;
+    right: 48%;
 }
 
-#apps {
-  display: inline-block;
-  position: absolute;
-  border: 2px solid #000;
-  border-radius: 5px;
-  margin: -2px 0 0 10px;
-  font-size: 15px;
-  font-family: Arial, Helvetica, sans-serif;
-  text-decoration: none;
-  /* padding: 1px 4px; */
-  color: black;
-  background: #CCC;
-  font-weight: bold;
-  cursor: pointer;
-  height: 20px;
+.screen {
+  /* border-radius: 5px; */
+  top: 0;
+  left: 0;
+  right: 0;
   bottom: 0;
-  left: 48%;
-}
-
-#screen {
-  border-radius: 5px;
-  border-style: solid;
-  border-color: white;
+  border-style: none;
   overflow-x: hidden;
   overflow-y: hidden;
-}
-.btmscreen {
-    position: fixed;
-    bottom: 0;
-    height: 49.3%;
-    right: 0;
-    left: 0;
-    width: 35%;
-    overflow: scroll;
-    margin: 0 auto;
-    background-color: #FFF;
-}
-.topscreen {
-    position: fixed;
-    height: 50%;
-    right: 0;
-    top: 0;
-    left: 0;
-    width: 50%;
-    overflow: scroll;
-    margin: 0 auto;
-    background-color: #FFF;
-
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+  background-color: transparent;
 }
 
 
@@ -148,36 +129,10 @@ body {
     width: 0%;
     text-align:center;
     overflow-x:hidden;
- background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
-background-size: 1800% 1800%;
+    background: url("https://bing.biturl.top/?resolution=1920&format=image&index=0&mkt=en-CA") !important;
+    background-image: url(../img/background.png);
 
 
--webkit-animation: rainbow 18s ease infinite;
--z-animation: rainbow 18s ease infinite;
--o-animation: rainbow 18s ease infinite;
-  animation: rainbow 18s ease infinite;
-}
-
-@-webkit-keyframes rainbow {
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%}
-    100%{background-position:0% 82%}
-}
-@-moz-keyframes rainbow {
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%}
-    100%{background-position:0% 82%}
-}
-@-o-keyframes rainbow {
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%}
-    100%{background-position:0% 82%}
-}
-@keyframes rainbow { 
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%}
-    100%{background-position:0% 82%}
-}
 	
   /* Preserve aspet ratio */
   
