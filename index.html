@@ -5,13 +5,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="assets/css/index.css" />
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+  <script src="assets/js/script.js  "></script>	
 
     
 	<title>Luna's site</title>
 </head>
-<body>
-<div id="startmenu">
+<body onload="startTime()">
+<!--<div id="startmenu">
 	<h1 class="startHtxt">Start</h1>	
     <center>
 		<div id="starticons">
@@ -21,8 +22,6 @@
                 <a href="mc.html" target="screen"><img border="0" alt="" src="assets/img/mc.png" width="32" height="32"><br>Minecraft</a>
 		<a href="https://nocensorweb.lunatiikxd.repl.co"><img border="0" alt="" src="assets/img/web.png" width="32" height="32"><br>NoCensorWeb</a>
 		<a href="/avalancheos/" target="screen"><img border="0" alt="" src="assets/img/avaos.png" width="52" height="32"><br>AvalancheOS</a>
-		<a href="/beta/" target="_blank"><img border="0" alt="" src="assets/img/bweb.png" width="32" height="32"><br>Beta Website</a>
-
 
 
 
@@ -34,62 +33,53 @@
                 </div>
     </center>
 
+  </div>-->
+
+  <!-- Side navigation -->
+<div class="sidenav">
+  <h2 class="websitetitle">Luna's site</h2>
+  <div class="sidenavlist">
+   <a class="white" onclick="openTab('Home')">Home</a>
+   <a class="white" onclick="openTab('News')">News</a>
+   <a class="white" onclick="openTab('Apps')">Apps</a>
   </div>
-  
+  <div class="white" id="time"></div>
+</div>
 
-<iframe class="screen" name="screen" scrolling="yes" src="cap.html" frameborder="1"></iframe>
-<div id="time">At 6PM ET, massive update.</div>
-<button onclick="starttoggle()">Start</button>           
+<!-- Page content -->
+<div class="main">
+  <div id="Home" class="tab" style="">
+    <h1>Home</h1>
+    Welcome to my brand new revamped website!
+    <br>
+    This website will eventually replace the old Start based website and will evolve as design and my projects will.
+    <br>
+    I hope you will like it as much as i have developing it!
+    </div>
 
-<!--<div id="startbar">
-			<button onclick="on();">Start</button>           
-		</div>-->
+    <div id="News" class="tab" style="display:none;">
+          <h1>News & Updates</h1>
+          <a>September 14th 2022 - Firefly project begins.</a><br>
+          <a>May 20th 2022 - Complete modern redesign of the website.</a><br>
+          <a>February 12th 2022 - Moved the website to GitHub, added AvalancheOS, Minecraft and NoCensorWeb.</a><br>
+          <a>February 11th 2022 - Updated the site to a new, better and simpler user interface</a><br>
+          <a>January 17th 2022 - Finished development of new site.</a><br> 
+          <a>December 21st 2021 - Updated website and fixed bugs. Added the prismOS page.</a> 
+      <br>
+      <br>
+      <br>      
+    </div>
 
- <script>
-		function starttoggle() {
-	document.getElementById("startmenu").classList.toggle("opened");
-};
-$(document).ready(function(){
-	$("#startmenu").click(function(){
-		document.getElementById("startmenu").classList.toggle("opened");
-	  }, function(){
-		document.getElementById("startmenu").classList.remove("opened");
-  
-	});
-  });
-
-  </script>
-  <script>
-function startTime(){
-    var date = new Date();
-    var h = date.getHours(); 
-    var m = date.getMinutes(); 
-    var s = date.getSeconds(); 
-    var session = "AM";
-    
-    if(h == 0){
-        h = 12;
-    }
-    
-    if(h > 12){
-        h = h - 12;
-        session = "PM";
-    }
-    
-    h = (h < 10) ? "0" + h : h;
-    m = (m < 10) ? "0" + m : m;
-    s = (s < 10) ? "0" + s : s;
-    
-    var time = h + ":" + m + ":" + s + " " + session;
-    document.getElementById("time").innerText = time;
-    document.getElementById("time").textContent = time;
-    setTimeout(startTime, 1000);
-}
-function checkTime(i) {
-    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-    return i;
-}
-    </script>
+    <div id="Apps" class="tab" style="display:none;overflow: hidden;">
+      <div class="appsicons">
+        <center>
+        <h1>Apps</h1>
+         <a href="mc.html"><img border="0" alt="" src="assets/img/mc.png" width="32" height="32"><br>Minecraft</a>
+         <a href="https://nocensorweb.lunatiikxd.repl.co"><img border="0" alt="" src="assets/img/web.png" width="32" height="32"><br>NoCensorWeb</a>
+         <a href="/avalancheos/"><img border="0" alt="" src="assets/img/avaos.png" width="52" height="32"><br>AvalancheOS</a>    
+       </center>
+      </div>
+    </div>
 </body>
 
 </html>
