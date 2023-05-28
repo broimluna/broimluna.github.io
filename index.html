@@ -42,72 +42,64 @@
    <a class="white" onclick="openTab('Home')">Home</a>
    <a class="white" onclick="openTab('News')">News</a>
    <a class="white" onclick="openTab('Apps')">Apps</a>
-   <a class="white" href="/beta/">New website beta</a>
   </div>
-  <div class="white" id="time"></div>
+  <div class="white" id="time">BETA</div>
 </div>
 
 <!-- Page content -->
 <div class="main">
   <div id="Home" class="tab" style="">
     <h1>Home</h1>
-    Welcome to my brand new revamped website!
-    <br>
-    This website has replaced the old Start based website and will evolve as design and my projects will.
-    <br>
-    I hope you will like it as much as i have developing it!
-
-    <br>
-    <br>
+    <div class="appsicons">
+       <a onclick="openTab('News')"><img border="0" alt="" src="assets/img/news.png" width="32" height="32"><br>News</a>
+       <a onclick="openTab('Apps')"><img border="0" alt="" src="assets/img/apps.png" width="32" height="32"><br>Apps</a>
+        </div>
     </div>
 
+
     <div id="News" class="tab" style="display:none;">
-      <div class="feed" style="overflow-y:scroll;height: 98%;position: absolute;">          
-        <h1>News & Updates</h1>
-          <a>March 5th 2023 - Vecteria has been replaced with a new project, codenamed Aero.</a>
-          <br>
-          <br>
-          <a>November 17th 2022 - Birthday! Vecteria has been added to the website.</a>
-          <br>
-          <br>
-	        <a>September 17th 2022 - Firefly project ends, new website is released.</a>
-          <br>
-          <br>
-	        <a>September 14th 2022 - Firefly project begins.</a>
-          <br>
-          <br>
-          <a>May 20th 2022 - Complete modern redesign of the website.</a>
-          <br>
-          <br>
-          <a>February 12th 2022 - Moved the website to GitHub, added AvalancheOS, Minecraft and NoCensorWeb.</a>
-          <br>
-          <br>
-          <a>February 11th 2022 - Updated the site to a new, better and simpler user interface</a>
-          <br>
-          <br>
-          <a>January 17th 2022 - Finished development of new site.</a>
-          <br> 
-          <br>
-          <a>December 21st 2021 - Updated website and fixed bugs. Added the prismOS page.</a> 
-      <br>
-      <br>
-      <br> 
-    </div>     
+      <h1>News & Updates</h1>
+      <div id="NewsCards">
+      <div class="card">
+        <h1>April 29th 2023</h1>
+        <br>
+        <a>Lightsky development begins.</a>
+      </div>
+      <div class="card">
+        <h1>May 6th 2023</h1>
+        <br>
+        <a>Lightsky goes into Public Beta</a>
+      </div>
+      <div class="card">
+        <h1>May 6th 2023</h1>
+        <br>
+        <a>Lightsky v0.5.1 is released.</a>
+      </div>
+      <div class="card">
+        <h1>May 27th 2023</h1>
+        <br>
+        <a>New website goes out.</a>
+      </div>
+    </div>
     </div>
 
     <div id="Apps" class="tab" style="display:none;overflow: hidden;">
       <div class="appsicons">
-        <center>
         <h1>Apps</h1>
          <a href="mc.html"><img border="0" alt="" src="assets/img/mc.png" width="32" height="32"><br>Minecraft</a>
          <a href="https://nocensorweb.broimluna.repl.co"><img border="0" alt="" src="assets/img/web.png" width="32" height="32"><br>NoCensorWeb</a>
-         <a href="/avalancheos/"><img border="0" alt="" src="assets/img/avaos.png" width="52" height="32"><br>AvalancheOS</a>
-         <a href="/aeroos/"><img border="0" alt="" src="assets/img/aero.png" width="40" height="40"><br>aeroOS</a>
-         <a href="/mountainOS/"><img border="0" alt="" src="assets/img/mountainos.png" width="32" height="36"><br>mountainOS</a>
-         <a href="/mountainlive/"><img border="0" alt="" src="assets/img/mountainos.png" width="32" height="36"><br>mountainOS Live</a>              
-	 </center>
+         <a href="avalancheos/"><img border="0" alt="" src="assets/img/avaos.png" width="52" height="32"><br>AvalancheOS</a>
+         <a href="aeroos/"><img border="0" alt="" src="assets/img/aero.png" width="32" height="32"><br>aeroOS</a>
+         <a href="mountainOS/"><img border="0" alt="" src="assets/img/mountainos.png" width="32" height="32"><br>mountainOS</a>
+         <a href="mountainlive/"><img border="0" alt="" src="assets/img/mountainos.png" width="32" height="32"><br>mountainOS Live</a>              
       </div>
     </div>
+
+     <div id="startup">
+      <div><img id="startupload" src="assets/img/loading.gif"></div>	
+     </div>
+
+
 </body>
 
 </html>

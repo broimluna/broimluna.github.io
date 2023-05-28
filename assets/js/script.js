@@ -1,3 +1,9 @@
+
+window.addEventListener('load', function () {
+    $("#startup").fadeOut();
+});
+
+
 function openTab(tabName) {
     var i;
     var x = document.getElementsByClassName("tab");
