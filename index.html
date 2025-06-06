@@ -1,58 +1,93 @@
-<html lang="en"><head>
-	<meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<title>luna's site</title>
-	<style>
-		/* Loading */
-@keyframes rotateWithPause {
-    0% {
-      transform: rotate(0deg);
-    }
-    66.67% {
-      transform: rotate(360deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  loading {
-    height: 100%;
-    overflow: hidden;
-    background: #000000;
-    z-index: 999999;
-    display: block;
-    top: 0px;
-    position: absolute;
-    left: 0;
-    width: 100vw;
-  }
-  .loadlogo {
-      left: 0;
-      right: 5%;
-      position: relative;
-      margin: 0 auto;
-      top: 40vh;
-      transform: translateY(-50%);
-      height: 256px;
-      width: 256px;
-      border-radius: 50%;
-      border: 2px solid rgba(255, 255, 255, 0.6);
-      animation: rotateWithPause 2.5s infinite;  
-  }
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="assets/css/style.css">
+        <script src="assets/js/tabs.js"></script>
+        <script src="assets/js/script.js"></script>
+        <title>luna's site</title>   
+    </head>
 
-	</style>
-</head>
-<body>
-   
-  
-  <a style="z-index: 9999999999;position: relative;top: 0;color: #ffffff40;font-family: Segoe UI;">to access the beta site, click </a><a href="/beta" style="z-index: 9999999999;position: relative;top: 0;color: #ffffff40;font-family: Segoe UI;">here</a>
-	<loading>
-		<center>
-            <img class="loadlogo" src="/beta/assets/img/logo.png">
+    <body onload="startTime();">
+        <container>
+
+        <div id="sidebar">
+            <div class="sidelogo" onclick="openTab('hometab')">
+                <img src="assets/img/logo.png">
+                <h3>luna's site</h3>
+            </div>
+            <button class="hometabhbutton active" onclick="openTab('hometab')">home</button>
+            <br>
+            <button class="blogtabhbutton" onclick="openTab('blogtab')">blog</button>
+            <br>
+            <button class="projectstabhbutton" onclick="openTab('projectstab')">projects</button>
+            <br>
+            <button class="abouttabhbutton" onclick="openTab('abouttab')">about</button>
+            <div id="sidetime">12:00:00</div>
+        </div>
+
+        <div id="main">
+          <div class="tab active" id="hometab">
+             <h1 class="title">home</h1>
+             <p>welcome to this new redesign!</p>
+             <p>it's a departure from the former design, which had been technically in use for several years</p>
+             <p>this website is also a tribute to the 2000s style and aesthetics of the internet</p>
+             <p>this website will be updated over time, so please head over to the <a style="color: cadetblue" onclick="openTab('blogtab')">blog</a> to learn more!</p>
+             <p>if you want to return to the old website, you can click<a href="/old"><button style="font-size: 15px">here</button></a></p>
+             <p>please enjoy :)</p>
+          </div>
+
+          <div class="tab" id="blogtab">
+            <h1 class="title">blog</h1>
+            <p>welcome to the blog page<br>this is where i ramble about stuff and where i annouce new stuff</p>
+            <br>
+            <div id="bloglist">
+
+                <div class="post">
+                        <div class="blogprofile">
+                        <img class="blogpfp" src="assets/img/logo.png" alt="Luna's profile picture" height="32" width="32">
+                        <strong class="blogusername">Luna</strong>
+                        <br>
+                        <small class="timestamp">June 6, 2025 at 9:00AM</small>
+                          </div>
+                        <a class="postContent">Welcome to the blog! Everything that goes thru my mind, or new projects, will be announced right here on the blog!</a>
+                </div>
+
+
+            </div>
+         </div>
+            
+            <div class="tab" id="projectstab">
+                <h1 class="title">projects</h1>
+                <p>welcome to the projects page</p>
+                <p>this is a portfolio of projects i've done / am doing or that I've contributed to</p>
+
+                <div class="projecticons">
+                    <a class="skyos" href="/skyos"><img src="assets/img/icons/skyos.png"><br><p>skyOS</p></a>
+                    <a class="knetwork" href="https://kitstudios.github.io/Network"><img src="assets/img/icons/knetwork.png"><br><p>Kit Network</p></a>
+                    <a class="dpwebsite" href="/ramwebsite"><img src="assets/img/icons/dp.png"><br><p>DP Website</p></a>
+                    <a class="contricon" href="https://github.com/PretendoNetwork/website/tree/weblate"><img src="assets/img/icons/pretendo.png"><br><p>Pretendo Web</p></a>
+                </div>
+
+            </div>
+            
+          <div class="tab" id="abouttab">
+            <h1 class="title">about</h1>
+            <p>hi, i'm luna, and i'm an 18 year old developer</p>
+            <p>i've been interested in computers since my very young age</p>
+            <p>my forces are in html, css and js, but i'm trying to learn more</p>
+            <p>i believe in open-source software and in trying new and old things</p>
+            <p>you can contact me by making an issue in this github repo</p>
+            <p>this website is an experimental design, meant to have elements of frutiger aero</p>
+            <p>please visit the "projects" page to learn more about me!</p>
+         </div>
+
+        </div>
+        </container>
+        <img class="mwwgif" src="assets/img/mww.gif">
+        <loading>
+            <center>
+            <img class="loadlogo" src="assets/img/logo.png">
             </center>
-</loading>
-
-
-</body></html>
+        </loading>
+    </body>
+</html>

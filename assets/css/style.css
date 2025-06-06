@@ -1,0 +1,329 @@
+/* Loading */
+@keyframes rotateWithPause {
+    0% {
+      transform: rotate(0deg);
+    }
+    66.67% {
+      transform: rotate(360deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  loading {
+    height: 110%;
+    overflow: hidden;
+    background: #000000e0;
+    z-index: 999999;
+    display: block;
+    top: 0px;
+    position: absolute;
+    left: 0;
+    width: 100vw;
+  }
+  .loadlogo {
+      left: 0;
+      right: 5%;
+      position: relative;
+      margin: 0 auto;
+      top: 40vh;
+      transform: translateY(-50%);
+      height: 256px;
+      width: 256px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      animation: rotateWithPause 2.5s infinite;  
+  }
+
+/* Fonts, and main parts */
+@font-face {
+    font-family: SegoeVista;
+    src: url("../fonts/segoeui.ttf");
+}
+
+a, h1, p, button, h3, li, #sidetime, #bloglist {
+    font-family: SegoeVista;
+    font-weight: 100;
+    transition: 0.8s;
+}
+
+body {
+    background-image: url("../img/wallpaper.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    padding: 20px;
+    box-sizing: border-box;
+    gap: 10px;
+    
+}
+@media (min-width: 360px) and (max-width: 1610px) and (min-height: 360px) and (max-height: 2649px) {
+    #sidebar {
+        width: 20% !important; /* Increase sidebar width */
+        height: 90vh !important;
+    }
+    #main {
+        width: 70% !important; /* Increase main content width */
+        height: 90vh !important;
+    }
+    container {
+        height: 98vh !important;
+    }
+    .projecticons {
+        width: 66vw !important;
+    }
+    .mwwgif {
+        display: none;
+    }
+}
+#sidebar {
+    position: relative; 
+    width: 8%; 
+    height: 40vh;
+    border: 2px solid rgba(0, 0, 0, 0.200);
+    border-radius: 28px;
+    background-color: rgba(0, 0, 0, 0.400);
+    padding: 20px;
+    color: cadetblue;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3); /* 3D effect */
+}
+#sidebar button {
+    margin-top: 2px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+#sidetime {
+position: absolute;
+  bottom: 2px;
+  text-align: center;
+  left: 0;
+  right: 0;
+  background: repeating-linear-gradient(to bottom, rgb(255, 255, 255), cadetblue);
+color: transparent;
+background-clip: text;
+}
+#main {
+    position: relative; 
+    width: 30%; 
+    height: 40vh;
+    border: 2px solid rgba(0, 0, 0, 0.200);
+    border-radius: 28px;
+    background-color: rgba(0, 0, 0, 0.400);
+    padding: 20px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3); /* 3D effect */
+}
+
+.tab {
+    height: 99%;
+  overflow-y: auto;
+  display: none;
+}
+.tab.active {
+    display: block;
+}
+#main p, #main li {
+    background: repeating-linear-gradient(to bottom, gray, white 20px);
+    color: transparent;
+    background-clip: text;
+    margin: 10px 0 0 0;
+    
+}
+#main li::marker {
+    color: white;
+}
+#blogtab {
+    overflow: hidden;
+}
+.title {
+margin-top: 0;
+background: repeating-linear-gradient(to bottom, rgb(255, 255, 255), cadetblue);
+color: transparent;
+background-clip: text;
+
+}
+
+.sidelogo {
+    gap: 6px;
+    display: flex;
+    right: 2px;
+    position: relative;
+}
+
+.sidelogo > img {
+    height: 48px;
+    width: 48px;
+    transition: 0.8s;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+}
+.sidelogo > img:hover {
+    transform: scale(1.10) rotate(359.9deg);
+}
+.sidelogo > h3 {
+    top: -8px;
+    position: relative;
+    background: repeating-linear-gradient(to bottom, rgb(255, 255, 255), cadetblue);
+    color: transparent;
+    background-clip: text;
+    white-space: nowrap;
+}
+.hover img {
+    transition: 0.8s;
+}
+.hover img:hover {
+    transform: scale(1.10);
+}
+
+button {
+    border: none;
+    background: transparent;
+    transition: 0.8s;
+    color: cadetblue;
+}
+button:hover, button.hover {
+text-decoration: underline;
+}
+button.active {
+text-decoration: underline;
+background: linear-gradient(to bottom, transparent, transparent, cadetblue);
+color: white;
+}
+.mwwgif {
+    position: absolute;
+  bottom: 4px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* projects page */
+.projecticons {
+    width: 28%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: fixed;
+    white-space: nowrap;
+    padding: 10px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    border-radius: 16px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: 0.8s;
+    margin-top: 10px;
+}
+
+.projecticons a {
+    display: inline-block;
+    text-align: center;
+    padding: 5px;
+    margin-right: 10px;
+    text-decoration: none;
+    color: white;
+    font-family: SegoeVista;
+    border-radius: 16px;
+    transition: 0.8s;
+    cursor: default;
+}
+.projecticons a p {
+    margin: 0 0 0 0 !important;
+}
+.projecticons a:hover {
+    background: linear-gradient(to bottom, transparent, transparent, cadetblue);
+}
+.projecticons a.knetwork img {
+    box-shadow: 0 0 12px 6px rgba(128, 0, 128, 0.5)
+}
+
+.projecticons a.contricon:hover {
+    background: linear-gradient(to bottom, transparent, transparent, rgba(0, 110, 255, 0.705)) !important;
+}
+.projecticons a:hover img {
+        transform: scale(1.10);
+}
+/* Style for the images */
+.projecticons a.skyos > img {
+    height: 64px;
+    width: 44px;
+}
+.projecticons a.knetwork > img {
+    border-radius: 8px;
+}
+.projecticons img {
+    height: 64px;
+    width: 64px;
+    transition: 0.8s;
+    border-radius: 8px;
+}
+
+.projecticons a:last-child {
+    margin-right: 0;
+}
+
+
+/* Blog page */
+#bloglist {
+    overflow-x: hidden;
+    height: 70%;
+    overflow-y: scroll;
+    width: 99%;
+    bottom: 10px;
+    position: relative;
+}
+
+.post {
+    margin: 0 0 5px 0px;
+    width: calc(100% - 11%);
+    border: 2px solid rgba(0, 0, 0, 0.200);
+    border-radius: 28px;
+    background-color: rgba(0, 0, 0, 0.400);
+    padding: 10px;
+    color: cadetblue;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3); /* 3D effect */
+}
+
+.post p, .post strong, .post a, .post .timestamp, .post .blogusername {
+    background: repeating-linear-gradient(to bottom, gray, white 20px);
+    color: transparent;
+    background-clip: text;   
+}
+.post > p {
+    margin: 5px;
+}
+
+.blogprofile {
+    left: 5px;
+    position: relative;
+    top: 3px;
+}
+
+.blogusername {
+    position: relative;
+    bottom: 21px;
+}
+
+.blogpfp {
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+.postContent {
+    bottom: 14px;
+    position: relative;
+    left: 8px;
+}
+
+.timestamp {
+    position: relative;
+    left: 40px;
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap;
+    bottom: 26px;
+}
