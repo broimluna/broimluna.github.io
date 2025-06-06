@@ -5,82 +5,52 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css" />
-  <script src="assets/js/script.js  "></script>	
+	<title>luna's site</title>
+	<style>
+		/* Loading */
+@keyframes rotateWithPause {
+    0% {
+      transform: rotate(0deg);
+    }
+    66.67% {
+      transform: rotate(360deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  loading {
+    height: 110%;
+    overflow: hidden;
+    background: #000000;
+    z-index: 999999;
+    display: block;
+    top: 0px;
+    position: absolute;
+    left: 0;
+    width: 100vw;
+  }
+  .loadlogo {
+      left: 0;
+      right: 5%;
+      position: relative;
+      margin: 0 auto;
+      top: 40vh;
+      transform: translateY(-50%);
+      height: 256px;
+      width: 256px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      animation: rotateWithPause 2.5s infinite;  
+  }
 
-    
-	<title>Luna's site</title>
+	</style>
 </head>
-<body onload="startTime()">
-<alert><a>The website will be going offline somewhere between Friday and Sunday for updates. Refresh using Ctrl+F5/Clear Cache when it's out to see the new website in it's entire beauty</a></alert>
-
-  <!-- Side navigation -->
-<div class="sidenav">
-  <h2 class="websitetitle">Luna's site</h2>
-  <div class="sidenavlist">
-   <a class="white" onclick="openTab('Home')">Home</a>
-   <a class="white" onclick="openTab('News')">News</a>
-   <a class="white" onclick="openTab('Apps')">Apps</a>
-  </div>
-  <div class="white" id="time">BETA</div>
-</div>
-
-<!-- Page content -->
-<div class="main">
-  <div id="Home" class="tab" style="">
-    <h1>Home</h1>
-    <div class="appsicons">
-       <a href="/beta"><img border="0" alt="" src="assets/img/web.png" width="32" height="32"><br>New Website</a>
-       <a onclick="openTab('News')"><img border="0" alt="" src="assets/img/news.png" width="32" height="32"><br>News</a>
-       <a onclick="openTab('Apps')"><img border="0" alt="" src="assets/img/apps.png" width="32" height="32"><br>Apps</a>
-        </div>
-    </div>
-
-
-    <div id="News" class="tab" style="display:none;">
-      <h1>News & Updates</h1>
-      <div id="NewsCards">
-      <div class="card">
-        <h1>April 29th 2023</h1>
-        <br>
-        <a>Lightsky development begins.</a>
-      </div>
-      <div class="card">
-        <h1>May 6th 2023</h1>
-        <br>
-        <a>Lightsky goes into Public Beta</a>
-      </div>
-      <div class="card">
-        <h1>May 6th 2023</h1>
-        <br>
-        <a>Lightsky v0.5.1 is released.</a>
-      </div>
-      <div class="card">
-        <h1>May 27th 2023</h1>
-        <br>
-        <a>New website goes out.</a>
-      </div>
-      <div class="card">
-        <h1>March 5th 2024</h1>
-        <a>The 2024 UI Update is released</a>
-        <a>Removed AvalancheOS, aeroOS, mountainOS Live<br>and added skyOS.</a>
-      </div>
-    </div>
-    </div>
-
-    <div id="Apps" class="tab" style="display:none;overflow: hidden;">
-      <div class="appsicons">
-        <h1>Apps</h1>
-         <a href="mc.html"><img border="0" alt="" src="assets/img/mc.png" width="32" height="32"><br>Minecraft</a>
-         <!--<a href="https://nocensorweb.broimluna.repl.co"><img border="0" alt="" src="assets/img/web.png" width="32" height="32"><br>NoCensorWeb</a>-->
-         <a href="mountainOS/"><img border="0" alt="" src="assets/img/mountainos.png" width="32" height="32"><br>mountainOS</a>
-         <a href="skyos/"><img border="0" alt="" src="assets/img/skyos.png" width="26" height="32"><br>skyOS</a>
-      </div>
-    </div>
-
-</div>
+<body>
+<loading>
+            <center>
+            <img class="loadlogo" src="/beta/assets/img/logo.png">
+            </center>
+</loading>
 </body>
-<div id="startup">
-  <div><img id="startupload" src="assets/img/loading.gif"></div>	
- </div>
 </html>
