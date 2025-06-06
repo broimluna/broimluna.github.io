@@ -69,7 +69,7 @@ body {
 
 /* The sidebar menu */
 .sidenav {
-  top: 8px;
+  top: 50px;
   left: 5px;
   bottom: 3px;
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
@@ -130,7 +130,7 @@ color: black !important;
   margin-left: 166px; /* Same as the width of the sidebar */
   position: fixed;
   padding: 0px 10px;
-  top: 8px;
+  top: 50px;
   right: 5px;
   left: 10px;
   bottom: 3px;
@@ -247,4 +247,21 @@ iframe {
   z-index: 999999;
   top: 0;
   left: 0;
+}
+alert {
+background: rgb(0 0 0 / 60%);
+  border: 2px solid rgba(0,0,0,0.200);
+  backdrop-filter: blur(8px);
+  border-radius: 8px;
+  width: 98.5%;
+  position: absolute;
+  padding: 5px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
+alert > a {
+    background: repeating-linear-gradient(to bottom, rgb(255, 255, 255), cadetblue);
+    color: transparent;
+    background-clip: text;
 }
