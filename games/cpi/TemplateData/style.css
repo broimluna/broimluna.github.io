@@ -38,7 +38,15 @@ body {
     transform: translate(-50%, -50%);
     display: none
 }
-
+.bottompagetext {
+position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    font-family: sans-serif;
+}
 #unity-logo {
     width: 154px;
     height: 130px;
