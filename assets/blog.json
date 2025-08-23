@@ -3,15 +3,15 @@
     {
       "blogprofile": {
         "pfp": {
-          "src": "",
+          "src": "assets/img/logo.png",
           "alt": "Luna's pfp",
-          "height": 48,
-          "width": 48
+          "height": 32,
+          "width": 32
         },
         "username": "broimluna",
-        "timestamp": "2025-08-23 11:47"
+        "timestamp": "14:00 EST - 2025-08-23"
       },
-      "postContent": "hello"
+      "postContent": "hello people, updates, including playable Club Penguin Island online, and new blog system"
     }
   ]
 }
