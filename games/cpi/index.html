@@ -9,7 +9,7 @@
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=960 height=600 tabindex="-1" style="border-radius: 8px;"></canvas>
+      <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -57,11 +57,11 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/test7.loader.js";
+      var loaderUrl = buildUrl + "/beta1.loader.js";
       var config = {
-        dataUrl: buildUrl + "/test7.data.unityweb",
-        frameworkUrl: buildUrl + "/test7.framework.js.unityweb",
-        codeUrl: buildUrl + "/test7.wasm.unityweb",
+        dataUrl: "https://dl.dropboxusercontent.com/scl/fi/7ocmi89awx4wzbrpj3djd/beta1.data.unityweb?rlkey=pydm6je4qxv97hpqjlc8c7l09",
+        frameworkUrl: buildUrl + "/beta1.framework.js.unityweb",
+        codeUrl: "https://dl.dropboxusercontent.com/scl/fi/mwry4r3ot8tf1ykixr161/beta1.wasm.unityweb?rlkey=b6b127y4agubiv9taak2x4a4f&st=213uh8la&dl=0",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "OpenCPI",
         productName: "CP Island",
@@ -104,7 +104,7 @@
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
         canvas.style.width = "960px";
-        canvas.style.height = "600px";
+          canvas.style.height = "600px";
       }
 
       loadingBar.style.display = "block";
@@ -117,7 +117,7 @@
               }).then((unityInstance) => {
                 loadingBar.style.display = "none";
                 fullscreenButton.onclick = () => {
-                  unityInstance.SetFullscreen(1);
+                    unityInstance.SetFullscreen(1);
                 };
               }).catch((message) => {
                 alert(message);
@@ -125,7 +125,6 @@
             };
 
       document.body.appendChild(script);
-
     </script>
   </body>
 </html>
