@@ -23,6 +23,7 @@ body {
 #unity-canvas {
     background: #231F20;
     border-radius: 8px;
+    outline: none;
 }
 
 .unity-mobile #unity-canvas {
