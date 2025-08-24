@@ -5,7 +5,7 @@ body {
 }
 @font-face {
     font-family: Loyola;
-    src: url("Loyola.otf") format("opentype");
+    src: url("loyola.otf") format("opentype");
 }
 
 #unity-container {
