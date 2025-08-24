@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Club Penguin Island</title>
+    <title>Unity WebGL Player | CP Island</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -23,7 +23,7 @@
         <div id="unity-build-title">CP Island</div>
       </div>
     </div>
-    <p class="bottompagetext">Data is saved after first Adventure, just sign in with the same username, password doesn't matter<br>Made possible thanks to the <a href="https://github.com/OpenCPIsland">OpenCPI</a> project</p>
+    <p class="bottompagetext">Data is saved after first Adventure, just sign in with the same username, password doesn't matter<br>Made possible thanks to the <a class="link" href="https://github.com/OpenCPIsland">OpenCPI</a> project</p>
     <script>
 
       var container = document.querySelector("#unity-container");
@@ -105,7 +105,7 @@
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
         canvas.style.width = "960px";
-          canvas.style.height = "600px";
+        canvas.style.height = "600px";
       }
 
       loadingBar.style.display = "block";
@@ -118,7 +118,7 @@
               }).then((unityInstance) => {
                 loadingBar.style.display = "none";
                 fullscreenButton.onclick = () => {
-                    unityInstance.SetFullscreen(1);
+                  unityInstance.SetFullscreen(1);
                 };
               }).catch((message) => {
                 alert(message);
@@ -126,6 +126,7 @@
             };
 
       document.body.appendChild(script);
+
     </script>
   </body>
 </html>

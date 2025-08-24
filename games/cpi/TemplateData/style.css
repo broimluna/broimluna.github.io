@@ -3,9 +3,17 @@ body {
     margin: 0;
     background: url("bg.png")
 }
+@font-face {
+    font-family: Loyola;
+    src: url("Loyola.otf") format("opentype");
+}
 
 #unity-container {
     position: absolute
+}
+
+.link {
+    color: white;
 }
 
     #unity-container.unity-desktop {
@@ -36,22 +44,24 @@ body {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    display: none
+    display: none;
 }
+
 .bottompagetext {
-position: absolute;
+    position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     text-align: center;
     color: white;
-    font-family: sans-serif;
+    font-family: Loyola;
 }
+
 #unity-logo {
     width: 154px;
     height: 75px;
     background: url(disneylogo.png) no-repeat center;
-    background-size: contain; 
+    background-size: contain;
 }
 
 #unity-progress-bar-empty {
@@ -59,14 +69,14 @@ position: absolute;
     height: 18px;
     margin-top: 10px;
     margin-left: 6.5px;
-    background: url('progress-bar-empty-dark.png') no-repeat center
+    background: url('progress-bar-empty-dark.png') no-repeat center;
 }
 
 #unity-progress-bar-full {
     width: 0%;
     height: 18px;
     margin-top: 10px;
-    background: url('progress-bar-full-dark.png') no-repeat center
+    background: url('progress-bar-full-dark.png') no-repeat center;
 }
 
 #unity-footer {
