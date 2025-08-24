@@ -21,7 +21,7 @@ body {
     }
 
 #unity-canvas {
-    background: #231F20;
+    background: darkblue;
     border-radius: 8px;
     outline: none;
 }
@@ -49,8 +49,9 @@ position: absolute;
 }
 #unity-logo {
     width: 154px;
-    height: 130px;
-    background: url('unity-logo-dark.png') no-repeat center
+    height: 75px;
+    background: url(disneylogo.png) no-repeat center;
+    background-size: contain; 
 }
 
 #unity-progress-bar-empty {
