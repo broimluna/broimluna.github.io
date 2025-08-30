@@ -3,17 +3,15 @@ body {
     margin: 0;
     background: url("bg.png")
 }
+
 @font-face {
     font-family: Loyola;
     src: url("loyola.otf") format("opentype");
 }
 
+
 #unity-container {
     position: absolute
-}
-
-.link {
-    color: white;
 }
 
     #unity-container.unity-desktop {
@@ -82,12 +80,17 @@ body {
 #unity-footer {
     position: relative
 }
+.link {
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+}
 
 .unity-mobile #unity-footer {
     display: none
 }
 
-#unity-webgl-logo {
+#unity-logo-title-footer {
     float: left;
     width: 80px;
     height: 38px;
