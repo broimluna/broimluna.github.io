@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | CP Island</title>
+    <title>Unity Web Player | CP Island</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -18,20 +18,14 @@
       </div>
       <div id="unity-warning"> </div>
       <div id="unity-footer">
-        <div id="unity-webgl-logo"></div>
+        <div id="unity-logo-title-footer"></div>
         <div id="unity-fullscreen-button"></div>
         <div id="unity-build-title">CP Island</div>
       </div>
     </div>
     <p class="bottompagetext">Data is saved after first Adventure, just sign in with the same username, password doesn't matter<br>Made possible thanks to the <a class="link" href="https://github.com/OpenCPIsland">OpenCPI</a> project</p>
     <script>
-
-      var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
-      var loadingBar = document.querySelector("#unity-loading-bar");
-      var progressBarFull = document.querySelector("#unity-progress-bar-full");
-      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
-      var warningBanner = document.querySelector("#unity-warning");
 
       // Shows a temporary message banner/ribbon for a few seconds, or
       // a permanent error message on top of the canvas if type=='error'.
@@ -40,6 +34,7 @@
       // way that non-critical warnings and error messages are presented to the
       // user.
       function unityShowBanner(msg, type) {
+        var warningBanner = document.querySelector("#unity-warning");
         function updateBannerVisibility() {
           warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
         }
@@ -58,11 +53,12 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = "https://dl.dropboxusercontent.com/scl/fi/0wmku1o7sr546pjz4k4vb/beta1.loader.js?rlkey=b7vxyqak37la9kl7u20tanpgo&st=jsgejjii&dl=0";
+      var loaderUrl = "https://dl.dropboxusercontent.com/scl/fi/vkf1ybfwwb20dkgo7hk3u/7705fafR1.loader.js?rlkey=kblj0y22jlpug0uwh9ugww31g&st=p0qdn44t&dl=0";
       var config = {
-        dataUrl: "https://dl.dropboxusercontent.com/scl/fi/7ocmi89awx4wzbrpj3djd/beta1.data.unityweb?rlkey=pydm6je4qxv97hpqjlc8c7l09&dl=0",
-        frameworkUrl: "https://dl.dropboxusercontent.com/scl/fi/sicg2h9stpe9wvhbmvvad/beta1.framework.js.unityweb?rlkey=o1hiyyoz5jc3wb69huc31l8lu&st=lrfql73w&dl=0",
-        codeUrl: "https://dl.dropboxusercontent.com/scl/fi/mwry4r3ot8tf1ykixr161/beta1.wasm.unityweb?rlkey=b6b127y4agubiv9taak2x4a4f&st=213uh8la&dl=0",
+        arguments: [],
+        dataUrl: "https://dl.dropboxusercontent.com/scl/fi/icjx5of0tuwmhfzztdtm1/7705fafR1.data.unityweb?rlkey=oefv7sp6puddv9gtrviejnzo9&st=uj41feig&dl=0",
+        frameworkUrl: "https://dl.dropboxusercontent.com/scl/fi/lt0tztzy08x9dyf4xzcq2/7705fafR1.framework.js.unityweb?rlkey=750e3c6i1igly4ca6au7bejyn&st=5cctgw88&dl=0",
+        codeUrl: "https://dl.dropboxusercontent.com/scl/fi/spdcw2wvsp74ido6u9au7/7705fafR1.wasm.unityweb?rlkey=mjb87afr7cul4q5d8dw96ftk8&st=lwvet500&dl=0",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "OpenCPI",
         productName: "CP Island",
@@ -93,7 +89,7 @@
         meta.name = 'viewport';
         meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
         document.getElementsByTagName('head')[0].appendChild(meta);
-        container.className = "unity-mobile";
+        document.querySelector("#unity-container").className = "unity-mobile";
         canvas.className = "unity-mobile";
 
         // To lower canvas resolution on mobile devices to gain some
@@ -103,23 +99,23 @@
 
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
-
         canvas.style.width = "960px";
         canvas.style.height = "600px";
       }
 
-      loadingBar.style.display = "block";
+      document.querySelector("#unity-loading-bar").style.display = "block";
 
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
-          progressBarFull.style.width = 100 * progress + "%";
+          document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
               }).then((unityInstance) => {
-                loadingBar.style.display = "none";
-                fullscreenButton.onclick = () => {
-                  unityInstance.SetFullscreen(1);
+                document.querySelector("#unity-loading-bar").style.display = "none";
+                document.querySelector("#unity-fullscreen-button").onclick = () => {
+                  document.makeFullscreen('unity-container');
                 };
+
               }).catch((message) => {
                 alert(message);
               });
