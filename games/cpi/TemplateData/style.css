@@ -4,6 +4,12 @@ body {
     background: url("bg.png")
 }
 
+@font-face {
+    font-family: Loyola;
+    src: url("loyola.otf") format("opentype");
+}
+
+
 #unity-container {
     position: absolute
 }
@@ -21,7 +27,9 @@ body {
     }
 
 #unity-canvas {
-    background: #001389;
+    background: darkblue;
+    border-radius: 8px;
+    outline: none;
 }
 
 .unity-mobile #unity-canvas {
@@ -34,13 +42,23 @@ body {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    display: none
+    display: none;
+}
+
+.bottompagetext {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    font-family: Loyola;
 }
 
 #unity-logo {
-    width: 149px;
-    height: 70px;
-    background: url('disneylogo.png') no-repeat center;
+    width: 154px;
+    height: 75px;
+    background: url(disneylogo.png) no-repeat center;
     background-size: contain;
 }
 
@@ -49,18 +67,23 @@ body {
     height: 18px;
     margin-top: 10px;
     margin-left: 6.5px;
-    background: url('progress-bar-empty-dark.png') no-repeat center
+    background: url('progress-bar-empty-dark.png') no-repeat center;
 }
 
 #unity-progress-bar-full {
     width: 0%;
     height: 18px;
     margin-top: 10px;
-    background: url('progress-bar-full-dark.png') no-repeat center
+    background: url('progress-bar-full-dark.png') no-repeat center;
 }
 
 #unity-footer {
     position: relative
+}
+.link {
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .unity-mobile #unity-footer {
