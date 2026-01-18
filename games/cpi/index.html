@@ -24,6 +24,7 @@
       </div>
     </div>
 <script>
+  
   var canvas = document.querySelector("#unity-canvas");
 
   function unityShowBanner(msg, type) {
@@ -83,31 +84,31 @@
     buildUrl + "/parts/test3.data.unityweb.part30",
   ];
 
-  async function loadSplitData(parts, progressCallback) {
-    const chunks = [];
-    let totalLength = 0;
-    let loadedLength = 0;
+  async function loadSplitData(parts) {
+  const chunks = [];
+  let totalLength = 0;
 
-    // Fetch and track progress for each chunk
-    for (const url of parts) {
-      const response = await fetch(url);
-      const buf = await response.arrayBuffer();
-      chunks.push(new Uint8Array(buf));
-      totalLength += buf.byteLength;
+  for (const url of parts) {
+    console.log("Fetching:", url); // This will show in F12 console
+    const response = await fetch(url);
+    
+    if (!response.ok) {
+      throw new Error(`Failed to load ${url} - Status: ${response.status}. Check case sensitivity or if the file exists on GitHub!`);
     }
-
-    // Stitch chunks together
-    const mergedArray = new Uint8Array(totalLength);
-    let offset = 0;
-    for (const chunk of chunks) {
-      mergedArray.set(chunk, offset);
-      offset += chunk.length;
-    }
-
-    // Create a Blob URL for Unity to consume
-    return URL.createObjectURL(new Blob([mergedArray], { type: 'application/octet-stream' }));
+    
+    const buf = await response.arrayBuffer();
+    chunks.push(new Uint8Array(buf));
+    totalLength += buf.byteLength;
   }
-  // --- END SPLIT LOADING LOGIC ---
+
+  const mergedArray = new Uint8Array(totalLength);
+  let offset = 0;
+  for (const chunk of chunks) {
+    mergedArray.set(chunk, offset);
+    offset += chunk.length;
+  }
+  return URL.createObjectURL(new Blob([mergedArray], { type: 'application/octet-stream' }));
+}
 
   var loaderUrl = buildUrl + "/test3.loader.js";
   var config = {
