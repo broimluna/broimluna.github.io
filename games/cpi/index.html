@@ -23,106 +23,140 @@
         <div id="unity-build-title">CP Island</div>
       </div>
     </div>
-    <p class="bottompagetext">Data is saved after first Adventure, just sign in with the same username, password doesn't matter<br>Made possible thanks to the <a class="link" href="https://github.com/OpenCPIsland">OpenCPI</a> project</p>
-    <script>
-      var canvas = document.querySelector("#unity-canvas");
+<script>
+  var canvas = document.querySelector("#unity-canvas");
 
-      // Shows a temporary message banner/ribbon for a few seconds, or
-      // a permanent error message on top of the canvas if type=='error'.
-      // If type=='warning', a yellow highlight color is used.
-      // Modify or remove this function to customize the visually presented
-      // way that non-critical warnings and error messages are presented to the
-      // user.
-      function unityShowBanner(msg, type) {
-        var warningBanner = document.querySelector("#unity-warning");
-        function updateBannerVisibility() {
-          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
-        }
-        var div = document.createElement('div');
-        div.innerHTML = msg;
-        warningBanner.appendChild(div);
-        if (type == 'error') div.style = 'background: red; padding: 10px;';
-        else {
-          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-          setTimeout(function() {
-            warningBanner.removeChild(div);
-            updateBannerVisibility();
-          }, 5000);
-        }
+  function unityShowBanner(msg, type) {
+    var warningBanner = document.querySelector("#unity-warning");
+    function updateBannerVisibility() {
+      warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+    }
+    var div = document.createElement('div');
+    div.innerHTML = msg;
+    warningBanner.appendChild(div);
+    if (type == 'error') div.style = 'background: red; padding: 10px;';
+    else {
+      if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+      setTimeout(function() {
+        warningBanner.removeChild(div);
         updateBannerVisibility();
-      }
+      }, 5000);
+    }
+    updateBannerVisibility();
+  }
 
-      var buildUrl = "Build";
-      var loaderUrl = "https://dl.dropboxusercontent.com/scl/fi/x1vohnxzi2wtg1hvkrc5z/c6517ec.loader.js?rlkey=1d147t4wqobbfr8vq29sq6wmt&st=jmdrkdkr&dl=0";
-      var config = {
-        arguments: [],
-        dataUrl: "https://dl.dropboxusercontent.com/scl/fi/6tz3frl742eja1r3qmyqh/c6517ec.data.unityweb?rlkey=hcwr4edv4icut5xvbhp06ut9n&st=ymnmf3u6&dl=0",
-        frameworkUrl: "https://dl.dropboxusercontent.com/scl/fi/os4z0zz17xluzeu06vibq/c6517ec.framework.js.unityweb?rlkey=6amc95s1i5xprm0zauj9az1la&st=lu1gix8k&dl=0",
-        codeUrl: "https://dl.dropboxusercontent.com/scl/fi/1z7skuczy3t2zppasx4rh/c6517ec.wasm.unityweb?rlkey=tcw85s63rdtnci4ahgg8t0htk&st=o91b629p&dl=0",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "OpenCPI",
-        productName: "CP Island",
-        productVersion: "1.13.1",
-        showBanner: unityShowBanner,
-      };
+  // --- START SPLIT LOADING LOGIC ---
+  var buildUrl = "Build";
+  
+  // Update these to match your 7 parts from the PowerShell output
+  const dataParts = [
+    buildUrl + "/parts/test3.data.unityweb.part00",
+    buildUrl + "/parts/test3.data.unityweb.part01",
+    buildUrl + "/parts/test3.data.unityweb.part02",
+    buildUrl + "/parts/test3.data.unityweb.part03",
+    buildUrl + "/parts/test3.data.unityweb.part04",
+    buildUrl + "/parts/test3.data.unityweb.part05",
+    buildUrl + "/parts/test3.data.unityweb.part06",
+    buildUrl + "/parts/test3.data.unityweb.part07",
+    buildUrl + "/parts/test3.data.unityweb.part08",
+    buildUrl + "/parts/test3.data.unityweb.part09",
+    buildUrl + "/parts/test3.data.unityweb.part10",
+    buildUrl + "/parts/test3.data.unityweb.part11",
+    buildUrl + "/parts/test3.data.unityweb.part12",
+    buildUrl + "/parts/test3.data.unityweb.part13",
+    buildUrl + "/parts/test3.data.unityweb.part14",
+    buildUrl + "/parts/test3.data.unityweb.part15",
+    buildUrl + "/parts/test3.data.unityweb.part16",
+    buildUrl + "/parts/test3.data.unityweb.part17",
+    buildUrl + "/parts/test3.data.unityweb.part18",
+    buildUrl + "/parts/test3.data.unityweb.part19",
+    buildUrl + "/parts/test3.data.unityweb.part20",
+    buildUrl + "/parts/test3.data.unityweb.part21",
+    buildUrl + "/parts/test3.data.unityweb.part22",
+    buildUrl + "/parts/test3.data.unityweb.part23",
+    buildUrl + "/parts/test3.data.unityweb.part24",
+    buildUrl + "/parts/test3.data.unityweb.part25",
+    buildUrl + "/parts/test3.data.unityweb.part26",
+    buildUrl + "/parts/test3.data.unityweb.part27",
+    buildUrl + "/parts/test3.data.unityweb.part28",
+    buildUrl + "/parts/test3.data.unityweb.part29",
+    buildUrl + "/parts/test3.data.unityweb.part30",
+  ];
 
-      // By default, Unity keeps WebGL canvas render target size matched with
-      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
-      // Set this to false if you want to decouple this synchronization from
-      // happening inside the engine, and you would instead like to size up
-      // the canvas DOM size and WebGL render target sizes yourself.
-      // config.matchWebGLToCanvasSize = false;
+  async function loadSplitData(parts, progressCallback) {
+    const chunks = [];
+    let totalLength = 0;
+    let loadedLength = 0;
 
-      // If you would like all file writes inside Unity Application.persistentDataPath
-      // directory to automatically persist so that the contents are remembered when
-      // the user revisits the site the next time, uncomment the following line:
-      // config.autoSyncPersistentDataPath = true;
-      // This autosyncing is currently not the default behavior to avoid regressing
-      // existing user projects that might rely on the earlier manual
-      // JS_FileSystem_Sync() behavior, but in future Unity version, this will be
-      // expected to change.
+    // Fetch and track progress for each chunk
+    for (const url of parts) {
+      const response = await fetch(url);
+      const buf = await response.arrayBuffer();
+      chunks.push(new Uint8Array(buf));
+      totalLength += buf.byteLength;
+    }
 
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Mobile device style: fill the whole browser client area with the game canvas:
+    // Stitch chunks together
+    const mergedArray = new Uint8Array(totalLength);
+    let offset = 0;
+    for (const chunk of chunks) {
+      mergedArray.set(chunk, offset);
+      offset += chunk.length;
+    }
 
-        var meta = document.createElement('meta');
-        meta.name = 'viewport';
-        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-        document.getElementsByTagName('head')[0].appendChild(meta);
-        document.querySelector("#unity-container").className = "unity-mobile";
-        canvas.className = "unity-mobile";
+    // Create a Blob URL for Unity to consume
+    return URL.createObjectURL(new Blob([mergedArray], { type: 'application/octet-stream' }));
+  }
+  // --- END SPLIT LOADING LOGIC ---
 
-        // To lower canvas resolution on mobile devices to gain some
-        // performance, uncomment the following line:
-        // config.devicePixelRatio = 1;
+  var loaderUrl = buildUrl + "/test3.loader.js";
+  var config = {
+    arguments: [],
+    dataUrl: "", // This will be filled by the loadSplitData function
+    frameworkUrl: buildUrl + "/test3.framework.js.unityweb",
+    codeUrl: buildUrl + "/test3.wasm.unityweb",
+    streamingAssetsUrl: "StreamingAssets",
+    companyName: "OpenCPI",
+    productName: "CP Island",
+    productVersion: "1.13.1",
+    showBanner: unityShowBanner,
+  };
 
+  if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+    var meta = document.createElement('meta');
+    meta.name = 'viewport';
+    meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+    document.getElementsByTagName('head')[0].appendChild(meta);
+    document.querySelector("#unity-container").className = "unity-mobile";
+    canvas.className = "unity-mobile";
+  } else {
+    canvas.style.width = "960px";
+    canvas.style.height = "600px";
+  }
 
-      } else {
-        // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
-      }
+  document.querySelector("#unity-loading-bar").style.display = "block";
 
-      document.querySelector("#unity-loading-bar").style.display = "block";
+  var script = document.createElement("script");
+  script.src = loaderUrl;
+  script.onload = () => {
+    // We call our split loader BEFORE initializing the Unity instance
+    loadSplitData(dataParts).then((finalDataUrl) => {
+      config.dataUrl = finalDataUrl; // Set the stitched URL to config
 
-      var script = document.createElement("script");
-      script.src = loaderUrl;
-      script.onload = () => {
-        createUnityInstance(canvas, config, (progress) => {
-          document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
-              }).then((unityInstance) => {
-                document.querySelector("#unity-loading-bar").style.display = "none";
-                document.querySelector("#unity-fullscreen-button").onclick = () => {
-                  document.makeFullscreen('unity-container');
-                };
+      createUnityInstance(canvas, config, (progress) => {
+        document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
+      }).then((unityInstance) => {
+        document.querySelector("#unity-loading-bar").style.display = "none";
+        document.querySelector("#unity-fullscreen-button").onclick = () => {
+          unityInstance.SetFullscreen(1);
+        };
+      }).catch((message) => {
+        alert(message);
+      });
+    });
+  };
 
-              }).catch((message) => {
-                alert(message);
-              });
-            };
-
-      document.body.appendChild(script);
-
-    </script>
+  document.body.appendChild(script);
+</script>
   </body>
 </html>
