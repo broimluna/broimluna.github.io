@@ -89,13 +89,7 @@
   let totalLength = 0;
 
   for (const url of parts) {
-    console.log("Fetching:", url); // This will show in F12 console
     const response = await fetch(url);
-    
-    if (!response.ok) {
-      throw new Error(`Failed to load ${url} - Status: ${response.status}. Check case sensitivity or if the file exists on GitHub!`);
-    }
-    
     const buf = await response.arrayBuffer();
     chunks.push(new Uint8Array(buf));
     totalLength += buf.byteLength;
@@ -107,15 +101,19 @@
     mergedArray.set(chunk, offset);
     offset += chunk.length;
   }
-  return URL.createObjectURL(new Blob([mergedArray], { type: 'application/octet-stream' }));
+
+  // FORCE the type to 'application/octet-stream' to prevent 
+  // the browser from thinking this is a script.
+  const blob = new Blob([mergedArray], { type: 'application/octet-stream' });
+  return URL.createObjectURL(blob);
 }
 
   var loaderUrl = buildUrl + "/test3.loader.js";
   var config = {
     arguments: [],
     dataUrl: "", // This will be filled by the loadSplitData function
-    frameworkUrl: buildUrl + "/test3.framework.js.unityweb",
-    codeUrl: buildUrl + "/test3.wasm.unityweb",
+    frameworkUrl: buildUrl + "/test3.framework.js",
+    codeUrl: buildUrl + "/test3.wasm",
     streamingAssetsUrl: "StreamingAssets",
     companyName: "OpenCPI",
     productName: "CP Island",
