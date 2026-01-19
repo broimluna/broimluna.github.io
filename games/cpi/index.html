@@ -84,15 +84,18 @@
     buildUrl + "/parts/test3.data.unityweb.part30",
   ];
 
-  async function loadSplitData(parts) {
+  async function loadSplitData(parts, onProgress) {
   const chunks = [];
   let totalLength = 0;
 
-  for (const url of parts) {
+  for (let i = 0; i < parts.length; i++) {
+    const url = parts[i];
     const response = await fetch(url);
     const buf = await response.arrayBuffer();
     chunks.push(new Uint8Array(buf));
     totalLength += buf.byteLength;
+    // Update progress: 50% allocated to data loading
+    if (onProgress) onProgress(0.5 * (i + 1) / parts.length);
   }
 
   const mergedArray = new Uint8Array(totalLength);
@@ -139,11 +142,14 @@
   script.src = loaderUrl;
   script.onload = () => {
     // We call our split loader BEFORE initializing the Unity instance
-    loadSplitData(dataParts).then((finalDataUrl) => {
+    loadSplitData(dataParts, (progress) => {
+      document.querySelector("#unity-progress-bar-full").style.width = (100 * progress) + "%";
+    }).then((finalDataUrl) => {
       config.dataUrl = finalDataUrl; // Set the stitched URL to config
 
       createUnityInstance(canvas, config, (progress) => {
-        document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
+        // Unity progress: add 50% offset, remaining 50% for Unity
+        document.querySelector("#unity-progress-bar-full").style.width = (100 * (0.5 + 0.5 * progress)) + "%";
       }).then((unityInstance) => {
         document.querySelector("#unity-loading-bar").style.display = "none";
         document.querySelector("#unity-fullscreen-button").onclick = () => {
