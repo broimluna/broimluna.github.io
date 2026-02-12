@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity Web Player | CP Island</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+  </head>
+  <body>
+    <div id="unity-container" class="unity-desktop">
+      <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+      </div>
+      <div id="unity-warning"> </div>
+      <div id="unity-footer">
+        <div id="unity-logo-title-footer"></div>
+        <div id="unity-fullscreen-button"></div>
+        <div id="unity-build-title">CP Island</div>
+      </div>
+    </div>
+    <script>
+      var canvas = document.querySelector("#unity-canvas");
+
+      function unityShowBanner(msg, type) {
+        var warningBanner = document.querySelector("#unity-warning");
+        function updateBannerVisibility() {
+          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+        }
+        var div = document.createElement('div');
+        div.innerHTML = msg;
+        warningBanner.appendChild(div);
+        if (type == 'error') div.style = 'background: red; padding: 10px;';
+        else {
+          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+          setTimeout(function() {
+            warningBanner.removeChild(div);
+            updateBannerVisibility();
+          }, 5000);
+        }
+        updateBannerVisibility();
+      }
+
+      // --- CONFIGURATION ---
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/test2.loader.js";
+      
+      // CONFIG: Update 'totalParts' to match your PowerShell output!
+      var totalParts = 31; 
+      var partBaseUrl = buildUrl + "/test2.data.unityweb.part";
+
+      var config = {
+        arguments: [],
+        dataUrl: "", // This will be populated by the Blob URL
+        frameworkUrl: buildUrl + "/test2.framework.js",
+        codeUrl: buildUrl + "/test2.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "OpenCPI",
+        productName: "CP Island",
+        productVersion: "1.13.2",
+        showBanner: unityShowBanner,
+      };
+
+      // Handle Mobile/Desktop sizing
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+        document.querySelector("#unity-container").className = "unity-mobile";
+        canvas.className = "unity-mobile";
+      } else {
+        canvas.style.width = "960px";
+        canvas.style.height = "600px";
+      }
+
+      document.querySelector("#unity-loading-bar").style.display = "block";
+
+      // --- ASYNC PART DOWNLOADER ---
+      async function downloadAndCombine() {
+        console.log("Starting split-file download...");
+        const promises = [];
+        for (let i = 1; i <= totalParts; i++) {
+          promises.push(fetch(partBaseUrl + i).then(res => {
+            if (!res.ok) throw new Error("Failed to load part " + i);
+            return res.arrayBuffer();
+          }));
+        }
+        const buffers = await Promise.all(promises);
+        return new Blob(buffers, { type: "application/octet-stream" });
+      }
+
+      // --- LOAD ENGINE ---
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = async () => {
+        try {
+          // 1. Get the combined data file
+          const combinedBlob = await downloadAndCombine();
+          const blobUrl = URL.createObjectURL(combinedBlob);
+          
+          // 2. Assign the generated URL to Unity
+          config.dataUrl = blobUrl;
+
+          // 3. Start Unity
+          createUnityInstance(canvas, config, (progress) => {
+            document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
+          }).then((unityInstance) => {
+            document.querySelector("#unity-loading-bar").style.display = "none";
+            
+            // Cleanup memory once the instance is ready
+            URL.revokeObjectURL(blobUrl);
+
+            document.querySelector("#unity-fullscreen-button").onclick = () => {
+              unityInstance.SetFullscreen(1);
+            };
+          }).catch((message) => {
+            alert(message);
+          });
+        } catch (err) {
+          alert("Error reassembling data files: " + err);
+        }
+      };
+
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>
