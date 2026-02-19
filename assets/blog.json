@@ -1,0 +1,43 @@
+{
+  "posts": [ 
+            {
+      "blogprofile": {
+        "pfp": {
+          "src": "assets/img/logo.png",
+          "alt": "Luna's pfp",
+          "height": 32,
+          "width": 32
+        },
+        "username": "broimluna",
+        "timestamp": "22:14 EST - 18-02-2026"
+      },
+      "postContent": "hello people, beta is now stable, enjoy"
+    },
+        {
+      "blogprofile": {
+        "pfp": {
+          "src": "assets/img/logo.png",
+          "alt": "Luna's pfp",
+          "height": 32,
+          "width": 32
+        },
+        "username": "broimluna",
+        "timestamp": "15:05 EST - 2025-11-11"
+      },
+      "postContent": "hello people, huge beta update, new UI improvements"
+    },
+    {
+      "blogprofile": {
+        "pfp": {
+          "src": "assets/img/logo.png",
+          "alt": "Luna's pfp",
+          "height": 32,
+          "width": 32
+        },
+        "username": "broimluna",
+        "timestamp": "14:00 EST - 2025-08-23"
+      },
+      "postContent": "hello people, updates, including playable Club Penguin Island online, and new blog system"
+    }
+  ]
+}
