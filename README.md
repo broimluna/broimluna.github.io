@@ -1,2 +1,0 @@
-# broimluna.github.io
-beta
