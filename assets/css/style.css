@@ -127,8 +127,9 @@ container.hidden {
     #sidebar {
         position: fixed !important;
         top: 0px;
+        left: 0px;
         width: 100% !important;
-        height: 9.95% !important;
+        height: 10% !important;
         border-radius: 0px !important;
         box-shadow: none !important;
         border: none !important;
@@ -138,12 +139,19 @@ container.hidden {
     #main {
         position: fixed !important;
         bottom: 0px;
+        left: 0px;
         width: 100% !important;
         height: 90% !important;
         border-radius: 0px !important;
         box-shadow: none !important;
-        border: none !important;
         padding: 0px !important;
+    }
+        body::before, body::after {
+        content: unset !important;
+    }
+
+    .containerhidebtn {
+        height: 32px;
     }
 
     .projecticons {
@@ -232,7 +240,7 @@ container.hidden {
     position: relative;
     width: 8%;
     height: 40vh;
-    border: 1px solid rgba(255, 255, 255, 0.35); 
+    border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: 28px;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%), rgba(255, 255, 255, 0.2);
     padding: 20px;
