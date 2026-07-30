@@ -556,9 +556,7 @@ button {
 
 .bubble {
     position: absolute;
-    bottom: -10%;
     border-radius: 50%;
-    /* Realistic soap bubble gradient */
     background: radial-gradient(circle at 30% 30%, 
         rgba(255, 255, 255, 0.95) 0%, 
         rgba(255, 255, 255, 0.4) 20%, 
@@ -570,8 +568,6 @@ button {
         inset 0 0 10px rgba(255, 255, 255, 0.5),
         0 0 15px rgba(255, 255, 255, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    opacity: 0.9;
-    animation: floatUp 8s linear forwards;
 }
 .containerhidebtn {
         top: 8px;
