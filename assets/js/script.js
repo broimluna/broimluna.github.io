@@ -157,6 +157,21 @@ window.addEventListener('load', function () {
     startBubbles();
 });
 
+function startTime() {
+    var time = new Date();
+    var hour = time.getHours();
+    var min = time.getMinutes();
+    var sec = time.getSeconds();
+    
+    hour = hour < 10 ? "0" + hour : hour;
+    min = min < 10 ? "0" + min : min;
+    sec = sec < 10 ? "0" + sec : sec;
+    
+    var timehtml = document.getElementById("sidetime");
+    if (timehtml) {
+        timehtml.innerHTML = hour + ":" + min + ":" + sec;
+    }
+}
 // Update time every second
 setInterval(startTime, 1000);
 
