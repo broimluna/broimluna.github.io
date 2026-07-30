@@ -4,17 +4,20 @@ function sleep(ms) {
 
 window.addEventListener('load', function () {
     const element = document.getElementsByTagName('loading')[0];
-    sleep(4100).then(() => {
-        element.style.transform = 'scale(1.10)';
-        element.style.transform = 'scale(1)';
-        element.style.opacity = '0';
-        element.style.transition = 'opacity 0.5s ease';
-        // Hide element completely after fade
-        setTimeout(() => {
-            element.style.display = 'none';
-        }, 500); // Matches fade duration
-    });
+    if (element) {
+        sleep(4100).then(() => {
+            element.style.transform = 'scale(1.10)';
+            element.style.transform = 'scale(1)';
+            element.style.opacity = '0';
+            element.style.transition = 'opacity 0.5s ease';
+            // Hide element completely after fade
+            setTimeout(() => {
+                element.style.display = 'none';
+            }, 500); // Matches fade duration
+        });
+    }
 });
+
 // Keep track of animation loop ID in case you ever need to stop it
 let bubbleAnimationFrame = null;
 
@@ -86,7 +89,7 @@ function startBubbles() {
     }
   }
 
-  function resolveCollisions() {
+  function resolveCollisionsBubs() {
     for (let i = 0; i < bubbles.length; i++) {
       for (let j = i + 1; j < bubbles.length; j++) {
         const b1 = bubbles[i];
@@ -120,7 +123,7 @@ function startBubbles() {
     }
   }
 
-  function animate() {
+  function animateBubs() {
     for (const b of bubbles) {
       b.x += b.vx;
       b.y += b.vy;
@@ -140,25 +143,23 @@ function startBubbles() {
       b.el.style.transform = `translate3d(${b.x - b.r}px, ${b.y - b.r}px, 0)`;
     }
 
-    resolveCollisions();
-    bubbleAnimationFrame = requestAnimationFrame(animate);
+    resolveCollisionsBubs();
+    // FIX 1: Fixed function reference name here
+    bubbleAnimationFrame = requestAnimationFrame(animateBubs); 
   }
 
   // Start loop
-  animate();
+  animateBubs();
 }
 
-// Make it accessible globally
-window.startBubbles = startBubbles;
-
+// FIX 2: Fixed missing closing parenthesis here
 window.addEventListener('load', function () {
-startBubbles();
-}
+    startBubbles();
+});
 
 // Update time every second
-
 setInterval(startTime, 1000);
 
 function togglecontainer() {
-    document.getElementsByTagName("container")[0].classList.toggle("hidden")
+    document.getElementsByTagName("container")[0].classList.toggle("hidden");
 }
