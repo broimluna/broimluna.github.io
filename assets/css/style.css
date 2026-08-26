@@ -127,8 +127,9 @@ container.hidden {
     #sidebar {
         position: fixed !important;
         top: 0px;
+        left: 0px;
         width: 100% !important;
-        height: 9.95% !important;
+        height: 10% !important;
         border-radius: 0px !important;
         box-shadow: none !important;
         border: none !important;
@@ -138,12 +139,19 @@ container.hidden {
     #main {
         position: fixed !important;
         bottom: 0px;
+        left: 0px;
         width: 100% !important;
         height: 90% !important;
         border-radius: 0px !important;
         box-shadow: none !important;
-        border: none !important;
         padding: 0px !important;
+    }
+        body::before, body::after {
+        content: unset !important;
+    }
+
+    .containerhidebtn {
+        height: 32px;
     }
 
     .projecticons {
@@ -232,7 +240,7 @@ container.hidden {
     position: relative;
     width: 8%;
     height: 40vh;
-    border: 1px solid rgba(255, 255, 255, 0.35); 
+    border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: 28px;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%), rgba(255, 255, 255, 0.2);
     padding: 20px;
@@ -548,9 +556,7 @@ button {
 
 .bubble {
     position: absolute;
-    bottom: -10%;
     border-radius: 50%;
-    /* Realistic soap bubble gradient */
     background: radial-gradient(circle at 30% 30%, 
         rgba(255, 255, 255, 0.95) 0%, 
         rgba(255, 255, 255, 0.4) 20%, 
@@ -562,8 +568,6 @@ button {
         inset 0 0 10px rgba(255, 255, 255, 0.5),
         0 0 15px rgba(255, 255, 255, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    opacity: 0.9;
-    animation: floatUp 8s linear forwards;
 }
 .containerhidebtn {
         top: 8px;

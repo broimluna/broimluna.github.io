@@ -3,91 +3,178 @@ function sleep(ms) {
 }
 
 window.addEventListener('load', function () {
-    const loader = document.querySelector('loading');
-    if (!loader) return;
-
-    // Use a slightly shorter sleep if 4.1s feels too long for users
-    sleep(4100).then(() => {
-        // Apply the "pop" and fade simultaneously
-        loader.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        loader.style.transform = 'scale(1.1)';
-        loader.style.opacity = '0';
-        loader.style.pointerEvents = 'none'; // Prevent clicking through during fade
-
-        setTimeout(() => {
-            loader.style.display = 'none';
-        }, 600);
-    });
+    const element = document.getElementsByTagName('loading')[0];
+    if (element) {
+        sleep(4100).then(() => {
+            element.style.transform = 'scale(1.10)';
+            element.style.transform = 'scale(1)';
+            element.style.opacity = '0';
+            element.style.transition = 'opacity 0.5s ease';
+            // Hide element completely after fade
+            setTimeout(() => {
+                element.style.display = 'none';
+            }, 500); // Matches fade duration
+        });
+    }
 });
 
-window.addEventListener('load', function () {
-const container = document.querySelector('.bubbles');
-const bubbleCount = 65;
-const bubbles = [];
+// Keep track of animation loop ID in case you ever need to stop it
+let bubbleAnimationFrame = null;
 
-// initialize bubbles once
-for (let i = 0; i < bubbleCount; i++) {
-  const b = document.createElement('span');
-  b.classList.add('bubble');
-  container.appendChild(b);
-  bubbles.push(b);
-  startBubble(b);
-}
+function startBubbles() {
+  const container = document.querySelector('.bubbles');
+  if (!container) return;
 
-function startBubble(b) {
-  randomize(b);
-  runAnimation(b);
+  // Prevent starting multiple loops if called twice
+  if (container.dataset.started === "true") return;
+  container.dataset.started = "true";
 
-  b.addEventListener('animationend', () => {
-    b.style.opacity = '0';
-    const wait = 1000 + Math.random() * 4000; // 1–5s cooldown
-    setTimeout(() => {
-      randomize(b);
-      runAnimation(b);
-    }, wait);
+  const bubbleCount = 65;
+  const bubbles = [];
+
+  let width = window.innerWidth;
+  let height = window.innerHeight;
+
+  window.addEventListener('resize', () => {
+    width = window.innerWidth;
+    height = window.innerHeight;
   });
+
+  // Initialize bubbles
+  for (let i = 0; i < bubbleCount; i++) {
+    const el = document.createElement('span');
+    el.classList.add('bubble');
+
+    const radius = 12 + Math.random() * 28; // 24px to 80px diameter
+
+    el.style.width = `${radius * 2}px`;
+    el.style.height = `${radius * 2}px`;
+
+    container.appendChild(el);
+
+    const bubble = {
+      el: el,
+      r: radius,
+      x: 0,
+      y: 0,
+      vx: (Math.random() - 0.5) * 0.6,
+      vy: -(0.5 + Math.random() * 1.2)
+    };
+
+    resetBubblePosition(bubble, bubbles, width, height, true);
+    bubbles.push(bubble);
+  }
+
+  function resetBubblePosition(b, allBubbles, screenW, screenH, isInitial = false) {
+    let attempts = 0;
+    let overlapping = true;
+
+    while (overlapping && attempts < 50) {
+      b.x = Math.random() * (screenW - b.r * 2) + b.r;
+      b.y = isInitial 
+        ? Math.random() * screenH 
+        : screenH + b.r + Math.random() * 100;
+
+      overlapping = false;
+      for (const other of allBubbles) {
+        if (other === b) continue;
+        const dx = b.x - other.x;
+        const dy = b.y - other.y;
+        if (Math.hypot(dx, dy) < b.r + other.r) {
+          overlapping = true;
+          break;
+        }
+      }
+      attempts++;
+    }
+  }
+
+  function resolveCollisionsBubs() {
+    for (let i = 0; i < bubbles.length; i++) {
+      for (let j = i + 1; j < bubbles.length; j++) {
+        const b1 = bubbles[i];
+        const b2 = bubbles[j];
+
+        const dx = b2.x - b1.x;
+        const dy = b2.y - b1.y;
+        const distance = Math.hypot(dx, dy);
+        const minDist = b1.r + b2.r;
+
+        if (distance < minDist) {
+          const overlap = minDist - distance;
+          const nx = dx / (distance || 1);
+          const ny = dy / (distance || 1);
+
+          b1.x -= nx * overlap * 0.5;
+          b1.y -= ny * overlap * 0.5;
+          b2.x += nx * overlap * 0.5;
+          b2.y += ny * overlap * 0.5;
+
+          const kx = b1.vx - b2.vx;
+          const ky = b1.vy - b2.vy;
+          const p = nx * kx + ny * ky;
+
+          b1.vx -= p * nx;
+          b1.vy -= p * ny;
+          b2.vx += p * nx;
+          b2.vy += p * ny;
+        }
+      }
+    }
+  }
+
+  function animateBubs() {
+    for (const b of bubbles) {
+      b.x += b.vx;
+      b.y += b.vy;
+
+      if (b.x - b.r < 0) {
+        b.x = b.r;
+        b.vx *= -1;
+      } else if (b.x + b.r > width) {
+        b.x = width - b.r;
+        b.vx *= -1;
+      }
+
+      if (b.y + b.r < -20) {
+        resetBubblePosition(b, bubbles, width, height, false);
+      }
+
+      b.el.style.transform = `translate3d(${b.x - b.r}px, ${b.y - b.r}px, 0)`;
+    }
+
+    resolveCollisionsBubs();
+    // FIX 1: Fixed function reference name here
+    bubbleAnimationFrame = requestAnimationFrame(animateBubs); 
+  }
+
+  // Start loop
+  animateBubs();
 }
 
-function runAnimation(b) {
-  b.style.animation = 'none';
-  void b.offsetWidth; // force reflow
-  b.style.animation = `floatUp linear ${b.dataset.duration}s forwards`;
-}
-
-function randomize(b) {
-    const size = 15 + Math.random() * 60; // Slightly smaller for better performance
-    const left = Math.random() * 100;
-    const duration = 10 + Math.random() * 15;
-    
-    b.style.width = `${size}px`;
-    b.style.height = `${size}px`;
-    b.style.left = `${left}%`;
-    b.style.opacity = (Math.random() * 0.4 + 0.2).toString(); // Varied transparency
-    b.dataset.duration = duration;
-    
-    // Add a slight blur to some bubbles for depth of field
-    b.style.filter = Math.random() > 0.5 ? 'blur(1px)' : 'none';
-}
+// FIX 2: Fixed missing closing parenthesis here
+window.addEventListener('load', function () {
+    startBubbles();
 });
-
 
 function startTime() {
-    const now = new Date();
-    // 'en-GB' gives 24h format, 'en-US' gives 12h.
-    const timeString = now.toLocaleTimeString('en-GB', {
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-    });
+    var time = new Date();
+    var hour = time.getHours();
+    var min = time.getMinutes();
+    var sec = time.getSeconds();
     
-    const timehtml = document.getElementById("sidetime");
-    if (timehtml) timehtml.textContent = timeString;
+    hour = hour < 10 ? "0" + hour : hour;
+    min = min < 10 ? "0" + min : min;
+    sec = sec < 10 ? "0" + sec : sec;
+    
+    var timehtml = document.getElementById("sidetime");
+    if (timehtml) {
+        timehtml.innerHTML = hour + ":" + min + ":" + sec;
+    }
 }
-
 // Update time every second
-
 setInterval(startTime, 1000);
 
 function togglecontainer() {
-    document.getElementsByTagName("container")[0].classList.toggle("hidden")
+    document.getElementsByTagName("container")[0].classList.toggle("hidden");
 }
