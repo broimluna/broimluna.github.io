@@ -532,7 +532,13 @@ button {
         padding: 0px !important;
         backdrop-filter: blur(6px) saturate(180%) !important;
     }
-        body::before, body::after {
+
+    #sidebar:hover, #main:hover {
+        background: default !iimportant;
+        box-shadow: none !important;
+    }
+    
+    body::before, body::after {
         content: unset !important;
     }
 
