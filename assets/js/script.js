@@ -171,7 +171,15 @@ function startTime() {
     if (timehtml) {
         timehtml.innerHTML = hour + ":" + min + ":" + sec;
     }
+    if (hour >= 18 || hour <= 6) {
+    $("body").classList.add("dark");
+} else {
+    $("body").classList.remove("dark");
 }
+}
+
+
+
 // Update time every second
 setInterval(startTime, 1000);
 
