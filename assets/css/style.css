@@ -534,7 +534,7 @@ button {
     }
 
     #sidebar:hover, #main:hover {
-        background: default !iimportant;
+        background: default !important;
         box-shadow: none !important;
     }
     
