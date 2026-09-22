@@ -311,7 +311,7 @@ button {
 }
 
 /* projects page */
-.projecticons {
+.iconsrow {
     width: 90%;
     overflow-x: auto;
     overflow-y: hidden;
@@ -326,7 +326,7 @@ button {
     margin-top: 10px;
 }
 
-    .projecticons a {
+    .iconsrow a {
         display: inline-block;
         text-align: center;
         padding: 5px;
@@ -339,44 +339,44 @@ button {
         cursor: default;
     }
 
-        .projecticons a p {
+        .iconsrow a p {
             margin: 0 0 0 0 !important;
             text-shadow: 0 0 8px #000000 !important;
         }
 
-        .projecticons a:hover p {
+        .iconsrow a:hover p {
             text-shadow: 0 0 4px #000000 !important;
         }
 
-        .projecticons a.knetwork img {
+        .iconsrow a.knetwork img {
             box-shadow: 0 0 12px 6px rgba(128, 0, 128, 0.5)
         }
 
-       /* .projecticons a.contricon:hover {
+       /* .iconsrow a.contricon:hover {
             background: linear-gradient(to bottom, transparent, transparent, rgba(0, 110, 255, 0.705)) !important;
         }*/
 
-        .projecticons a:hover img {
+        .iconsrow a:hover img {
             transform: scale(1.10);
         }
         /* Style for the images */
-        .projecticons a.skyos > img {
+        .iconsrow a.skyos > img {
             height: 64px;
             width: 44px;
         }
 
-        .projecticons a.knetwork > img {
+        .iconsrow a.knetwork > img {
             border-radius: 8px;
         }
 
-    .projecticons img {
+    .iconsrow img {
         height: 64px;
         width: 64px;
         transition: 0.8s;
         border-radius: 8px;
     }
 
-    .projecticons a:last-child {
+    .iconsrow a:last-child {
         margin-right: 0;
     }
 
@@ -540,8 +540,9 @@ button {
         height: 32px;
     }
 
-    .projecticons {
+    .iconsrow {
         width: 94vw !important;
+        backdrop-filter: saturate(2) !important;
     }
 
     #sidebar br {
@@ -593,6 +594,8 @@ button {
 
     .post {
         margin: 0 0 15px 0px !important;
+        backdrop-filter: saturate(2) !important;
+
     }
 
     .postContent {
@@ -620,6 +623,7 @@ button {
         background-clip: unset !important;
         margin: 10px 0 0 0;
     }
+    
 }
 /*end of mobile*/
 
