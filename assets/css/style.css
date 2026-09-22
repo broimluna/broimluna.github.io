@@ -133,118 +133,7 @@ container.hidden {
     interactivity: inert;
     opacity: 0;
 }
-@media (pointer:none), (pointer:coarse) {
-    #sidebar {
-        position: fixed !important;
-        top: 0px;
-        left: 0px;
-        width: 100% !important;
-        height: 10% !important;
-        border-radius: 0px !important;
-        box-shadow: none !important;
-        border: none !important;
-        padding: 0px !important;
-    }
 
-    #main {
-        position: fixed !important;
-        bottom: 0px;
-        left: 0px;
-        width: 100% !important;
-        height: 90% !important;
-        border-radius: 0px !important;
-        box-shadow: none !important;
-        padding: 0px !important;
-    }
-        body::before, body::after {
-        content: unset !important;
-    }
-
-    .containerhidebtn {
-        height: 32px;
-    }
-
-    .projecticons {
-        width: 94vw !important;
-    }
-
-    #sidebar br {
-        display: none
-    }
-
-    .tab {
-        padding: 20px;
-    }
-
-    .sidelogo {
-        gap: 14px !important;
-        left: 8px;
-        top: 8px;
-        position: relative;
-    }
-
-        .sidelogo > img {
-            height: 100px !important;
-            width: 100px !important;
-        }
-
-    #sidebar button {
-        left: 10px;
-        position: relative
-    }
-
-    .mwwgif, #sidetime, .blogprofile > br {
-        display: none;
-    }
-
-    a, h1, p, button, h3, li, #sidetime, #bloglist {
-        font-size: 35px !important;
-    }
-
-    .blogpfp {
-        height: 64px !important;
-        width: 64px !important;
-    }
-
-    .blogusername {
-        bottom: 35px !important;
-        left: 4px !important;
-        background: transparent !important;
-        color: #1a1a1a !important;
-        background-clip: unset !important;
-        margin: 10px 0 0 0;
-    }
-
-    .post {
-        margin: 0 0 15px 0px !important;
-    }
-
-    .postContent {
-        bottom: 2px !important;
-        left: 8px !important;
-        background: transparent !important;
-        color: #1a1a1a !important;
-        background-clip: unset !important;
-        margin: 10px 0 0 0;
-    }
-
-    .timestamp {
-        right: 70px !important;
-        left: unset !important;
-        bottom: 12px !important;
-        background: transparent !important;
-        color: #1a1a1a !important;
-        background-clip: unset !important;
-        margin: 10px 0 0 0;
-    }
-
-    #main p, #main li {
-        background: transparent !important;
-        color: #1a1a1a !important;
-        background-clip: unset !important;
-        margin: 10px 0 0 0;
-    }
-}
 
 #sidebar {
     position: relative;
@@ -495,7 +384,7 @@ button {
 /* Blog page */
 #bloglist {
     overflow-x: hidden;
-    height: 70%;
+    height: 69%;
     overflow-y: scroll;
     width: 99%;
     bottom: 10px;
@@ -510,7 +399,7 @@ button {
     border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: 28px;
     /* background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%), rgba(255, 255, 255, 0.2); */
-    box-shadow: 0 8px 14px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.4);
     backdrop-filter: saturate();
 }
 
@@ -554,7 +443,9 @@ button {
     white-space: nowrap;
     bottom: 28px;
 }
+/* End of Blog */
 
+/* Bubbles */
 .bubbles {
     position: fixed;
     inset: 0;
@@ -615,6 +506,122 @@ button {
         opacity: 0;
     }
 }
+/*Mobile*/
+@media (pointer:none), (pointer:coarse) {
+    #sidebar {
+        position: fixed !important;
+        top: 0px;
+        left: 0px;
+        width: 100% !important;
+        height: 10% !important;
+        border-radius: 0px !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0px !important;
+        backdrop-filter: blur(6px) saturate(180%) !important;
+    }
+
+    #main {
+        position: fixed !important;
+        bottom: 0px;
+        left: 0px;
+        width: 100% !important;
+        height: 90% !important;
+        border-radius: 0px !important;
+        box-shadow: none !important;
+        padding: 0px !important;
+        backdrop-filter: blur(6px) saturate(180%) !important;
+    }
+        body::before, body::after {
+        content: unset !important;
+    }
+
+    .containerhidebtn {
+        height: 32px;
+    }
+
+    .projecticons {
+        width: 94vw !important;
+    }
+
+    #sidebar br {
+        display: none
+    }
+
+    .tab {
+        padding: 20px;
+    }
+
+    .sidelogo {
+        gap: 14px !important;
+        left: 8px;
+        top: 8px;
+        position: relative;
+    }
+
+        .sidelogo > img {
+            height: 100px !important;
+            width: 100px !important;
+        }
+
+    #sidebar button {
+        left: 10px;
+        position: relative
+    }
+
+    .mwwgif, #sidetime, .blogprofile > br {
+        display: none;
+    }
+
+    a, h1, p, button, h3, li, #sidetime, #bloglist {
+        font-size: 35px !important;
+    }
+
+    .blogpfp {
+        height: 64px !important;
+        width: 64px !important;
+    }
+
+    .blogusername {
+        bottom: 25px !important;
+        left: 4px !important;
+        background: transparent !important;
+        color: #1a1a1a !important;
+        background-clip: unset !important;
+        margin: 10px 0 0 0;
+    }
+
+    .post {
+        margin: 0 0 15px 0px !important;
+    }
+
+    .postContent {
+        bottom: 2px !important;
+        left: 8px !important;
+        background: transparent !important;
+        color: #1a1a1a !important;
+        background-clip: unset !important;
+        margin: 10px 0 0 0;
+    }
+
+    .timestamp {
+        float: right;
+        left: unset !important;
+        bottom: 12px !important;
+        background: transparent !important;
+        color: #1a1a1a !important;
+        background-clip: unset !important;
+        margin: 10px 0 0 0;
+    }
+
+    #main p, #main li {
+        background: transparent !important;
+        color: #1a1a1a !important;
+        background-clip: unset !important;
+        margin: 10px 0 0 0;
+    }
+}
+/*end of mobile*/
 
 
 
