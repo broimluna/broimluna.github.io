@@ -79,6 +79,9 @@ body {
     background: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.5), transparent 40%), linear-gradient(160deg, #38c0ff 0%, #0078d7 100%);
     background-blend-mode: screen;
 }
+body.dark {
+    background: radial-gradient(circle at 10% 20%, rgb(255 255 255 / 0%), transparent 40%), linear-gradient(160deg, #0078d7 0%, #0078d7 100%);
+}
 
     /* soft floating highlights using pseudo-elements on body */
     body::before,
