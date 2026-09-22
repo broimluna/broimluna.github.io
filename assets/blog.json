@@ -1,5 +1,18 @@
 {
   "posts": [ 
+                {
+      "blogprofile": {
+        "pfp": {
+          "src": "assets/img/logo.png",
+          "alt": "Luna's pfp",
+          "height": 32,
+          "width": 32
+        },
+        "username": "broimluna",
+        "timestamp": "17:45 EST - 22-09-2026"
+      },
+      "postContent": "quick updates, removed club penguin island from games, next up should be trying to fix mobile :)"
+    },
             {
       "blogprofile": {
         "pfp": {
