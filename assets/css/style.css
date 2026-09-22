@@ -67,6 +67,8 @@ a, h1, p, button, h3, li, #sidetime, #bloglist {
 .ahover {
     text-shadow: none;
     color: #004d7f;
+    cursor: default;
+    text-decoration: underline;
 }
 .ahover:hover {
             text-shadow: 0 0 8px #004d7f;
